@@ -1,21 +1,27 @@
 <template>
   <main>
-    <awsl-header></awsl-header>
-    <awsl-banner title="新闻中心"></awsl-banner>
+    <awsl-header />
+    <awsl-banner title="新闻中心" />
     <awsl-main>
       <awsl-article>
-        <awsl-markdown :title="title" :path="newsPath" v-if="newsId !== null"></awsl-markdown>
+        <awsl-markdown v-if="newsId !== null" :title="title" :path="newsPath" />
       </awsl-article>
     </awsl-main>
-    <awsl-footer></awsl-footer>
+    <awsl-footer />
   </main>
 </template>
 
 <script>
 import awslMarkdown from '../../components/awsl-markdown.vue'
 export default {
+  name: 'PageNews',
   components: { awslMarkdown },
-  name: 'page-news',
+  data () {
+    return {
+      title: '',
+      newsId: null
+    }
+  },
   head () {
     return {
       title: `${this.title || '新闻中心'} | 冬尘月艺术司`
@@ -24,12 +30,6 @@ export default {
   computed: {
     newsPath () {
       return `news/${this.newsId}`
-    }
-  },
-  data () {
-    return {
-      title: '',
-      newsId: null
     }
   },
   async mounted () {

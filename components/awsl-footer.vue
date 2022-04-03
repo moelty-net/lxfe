@@ -4,10 +4,10 @@
       <ul>
         <li>&copy; 2022 冬尘月艺术司 保留所有权利</li>
         <li><a href="https://lty.name" target="_blank">天依网络</a> 提供技术支持</li>
-        <li>构建版本号 {{commit}}</li>
+        <li>构建版本号 {{ commit }}</li>
       </ul>
     </nav>
-</footer>
+  </footer>
 </template>
 
 <script>

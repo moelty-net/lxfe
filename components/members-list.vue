@@ -1,16 +1,18 @@
 <template>
   <div>
-    <h3 class="member-list-title">{{title}}</h3>
+    <h3 class="member-list-title">
+      {{ title }}
+    </h3>
     <div class="aw-g member-introduction-group">
-      <div class="aw-g-w-s-s-1 aw-g-w-1-2" v-for="member in members" :key="member.uid">
+      <div v-for="member in members" :key="member.uid" class="aw-g-w-s-s-1 aw-g-w-1-2">
         <div class="aw-p member-introduction">
           <div>
-            <img :src="`/data/about/avatar/${member.uid}.jpg`" class="member-avatar"/>
+            <img :src="`/data/about/avatar/${member.uid}.jpg`" class="member-avatar">
           </div>
           <div class="member-detail">
-            <b>{{member.name}}</b><br>
-            <span class="member-introduction-title">{{member.title.join(" / ")}}</span><br>
-            <a :href="`https://space.bilibili.com/${member.uid}`" target="_blank">UID: {{member.uid}}</a><br>
+            <b>{{ member.name }}</b><br>
+            <span class="member-introduction-title">{{ member.title.join(" / ") }}</span><br>
+            <a :href="`https://space.bilibili.com/${member.uid}`" target="_blank">UID: {{ member.uid }}</a><br>
           </div>
         </div>
       </div>
@@ -21,8 +23,8 @@
 <script>
 export default {
   props: {
-    title: String,
-    members: Array
+    title: { type: String, default: '' },
+    members: { type: Array, default: () => [] }
   }
 }
 </script>

@@ -1,6 +1,6 @@
 import exec from 'child_process'
 const commitHash = exec.execSync('git rev-parse --short HEAD')
-console.log("Build Version: ", commitHash.toString())
+console.log('Build Version: ', commitHash.toString())
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -18,7 +18,7 @@ export default {
     title: '冬尘月艺术司',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

@@ -1,7 +1,11 @@
 <template>
   <section>
-      <h2 v-if="title !== ''">{{title}}</h2>
-      <div v-html="content"></div>
+    <h2 v-if="title !== ''">
+      {{ title }}
+    </h2>
+    <!-- eslint-disable vue/no-v-html -->
+    <div v-html="content" />
+    <!--eslint-enable-->
   </section>
 </template>
 
@@ -10,8 +14,8 @@ import MarkdownIt from 'markdown-it'
 
 export default {
   props: {
-    title: String,
-    path: String
+    title: { type: String, default: '' },
+    path: { type: String, required: true }
   },
   data () {
     return {

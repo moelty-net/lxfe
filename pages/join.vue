@@ -1,15 +1,15 @@
 <template>
   <main>
-    <awsl-header></awsl-header>
-    <awsl-banner title="加入我们"></awsl-banner>
+    <awsl-header />
+    <awsl-banner title="加入我们" />
     <awsl-main>
       <awsl-article>
         <section>
           <div class="join-progress">
             <div class="join-progress-bar">
-              <div class="join-progress-bar-1"></div>
-              <div class="join-progress-bar-2"></div>
-              <div class="join-progress-bar-3"></div>
+              <div class="join-progress-bar-1" />
+              <div class="join-progress-bar-2" />
+              <div class="join-progress-bar-3" />
             </div>
             <div class="join-progress-circle">
               <div>1</div>
@@ -22,27 +22,27 @@
               <div>加入冬尘月</div>
             </div>
           </div>
-          <awsl-markdown title="" path="/join/welcome" class="welcome"></awsl-markdown>
+          <awsl-markdown title="" path="/join/welcome" class="welcome" />
           <a :href="qq.link" target="_blank" class="join-us-btn aw-btn">点击进入审核 QQ 群</a>
-          <p>{{qq.text}} {{qq.id}}</p>
+          <p>{{ qq.text }} {{ qq.id }}</p>
         </section>
-        <awsl-markdown title="审核条件" path="/join/qualification"></awsl-markdown>
+        <awsl-markdown title="审核条件" path="/join/qualification" />
       </awsl-article>
     </awsl-main>
-    <awsl-footer></awsl-footer>
+    <awsl-footer />
   </main>
 </template>
 
 <script>
 export default {
-  name: 'page-join',
-  head: {
-    title: '加入我们 | 冬尘月艺术司'
-  },
+  name: 'PageJoin',
   data () {
     return {
       qq: { link: '', text: '', id: null }
     }
+  },
+  head: {
+    title: '加入我们 | 冬尘月艺术司'
   },
   async mounted () {
     this.qq = await this.$axios.$get('/data/join/qq.json')

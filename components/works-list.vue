@@ -1,16 +1,18 @@
 <template>
   <div>
-    <h3 class="work-list-title">{{title}}</h3>
+    <h3 class="work-list-title">
+      {{ title }}
+    </h3>
     <div class="aw-g work-introduction-group">
-      <div class="aw-g-w-s-s-1 aw-g-w-1-2" v-for="work in works" :key="work.aid">
+      <div v-for="work in works" :key="work.aid" class="aw-g-w-s-s-1 aw-g-w-1-2">
         <div class="aw-p work-introduction">
           <div>
             <img :src="`/data/works/cover/${work.aid}.jpg`" alt="作品封面">
           </div>
           <div class="work-detail">
-            <b>{{work.name}}</b><br>
-            <span class="work-desc">{{work.description}}</span><br>
-            <a target="_blank" :href="`https://b23.tv/av${work.aid}`">av{{work.aid}}</a>
+            <b>{{ work.name }}</b><br>
+            <span class="work-desc">{{ work.description }}</span><br>
+            <a target="_blank" :href="`https://b23.tv/av${work.aid}`">av{{ work.aid }}</a>
           </div>
         </div>
       </div>
