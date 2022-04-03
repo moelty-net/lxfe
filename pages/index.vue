@@ -135,6 +135,8 @@ export default {
   padding: 8px 16px;
   width: 100%;
   justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .news li:hover {
