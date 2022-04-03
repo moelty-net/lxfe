@@ -1,0 +1,68 @@
+<template>
+  <div>
+    <h3 class="member-list-title">{{title}}</h3>
+    <div class="aw-g member-introduction-group">
+      <div class="aw-g-w-s-s-1 aw-g-w-1-2" v-for="member in members" :key="member.uid">
+        <div class="aw-p member-introduction">
+          <div>
+            <img :src="`/data/about/avatar/${member.uid}.jpg`" class="member-avatar"/>
+          </div>
+          <div class="member-detail">
+            <b>{{member.name}}</b><br>
+            <span class="member-introduction-title">{{member.title.join(" / ")}}</span><br>
+            <a :href="`https://space.bilibili.com/${member.uid}`" target="_blank">UID: {{member.uid}}</a><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    title: String,
+    members: Array
+  }
+}
+</script>
+
+<style scoped>
+.member-list-title:first-child {
+  margin-top: 1em;
+}
+
+.member-list-title {
+  margin-top: 3em;
+  margin-bottom: 0;
+}
+
+.member-introduction-group {
+  margin: 0 -1em 1em -1em;
+}
+
+.member-introduction {
+  margin: 1em;
+  height: 80px;
+  display: grid;
+  grid-template-columns: 100px auto;
+  line-height: 1.6;
+}
+
+.member-introduction-title, a {
+  color: #9c9c9c;
+}
+
+a:hover {
+  border-bottom-color: #9c9c9c;
+}
+
+.member-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+</style>
