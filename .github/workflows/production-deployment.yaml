@@ -1,0 +1,46 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Production Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deployment:
+    concurrency: production_deployment
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 16.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16.x
+        cache: 'npm'
+    - name: Install Dependencies
+      run: npm install
+    - name: Build
+      run: npm run generate && rm -rf dist/data
+    - name: Prepare for Remote Deployment
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ci
+        key: ${{ secrets.SSH_KEY }}
+        script: rm -rf /tmp/deploy-dongchenyue.art
+    - name: Deploy to Production Server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ci
+        key: ${{ secrets.SSH_KEY }}
+        source: dist
+        target: /tmp/deploy-dongchenyue.art
+    - name: Post-deployment Script
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ci
+        key: ${{ secrets.SSH_KEY }}
+        script: rm -rf /www/wwwroot/default/* && mv /tmp/deploy-dongchenyue.art/dist/* /www/wwwroot/default && chgrp -R www /www/wwwroot/default/*
