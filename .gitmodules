@@ -1,3 +1,3 @@
 [submodule "static/data"]
 	path = static/data
-	url = https://luotianyi-dev@dev.azure.com/luotianyi-dev/SaaS/_git/dongchenyue-art-data
+	url = https://github.com/dongchenyue/data.git
