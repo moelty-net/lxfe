@@ -43,4 +43,4 @@ jobs:
         host: ${{ secrets.SSH_HOST }}
         username: ci
         key: ${{ secrets.SSH_KEY }}
-        script: rm -rf /www/wwwroot/default/* && mv /tmp/deploy-dongchenyue.art/dist/* /www/wwwroot/default && chgrp -R www /www/wwwroot/default/*
+        script: rm -rf /www/wwwroot/default/* && mv /tmp/deploy-dongchenyue.art/dist/* /www/wwwroot/default && chgrp -R www /www/wwwroot/default/* && ln -s /www/wwwroot/data /www/wwwroot/default
