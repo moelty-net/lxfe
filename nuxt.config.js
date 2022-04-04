@@ -22,8 +22,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/awsl.min.css' },
-      { rel: 'stylesheet', href: '/common.css' }
+      { rel: 'stylesheet', href: '/awsl.min.css' }
     ]
   },
 
