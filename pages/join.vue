@@ -12,9 +12,15 @@
               <div class="join-progress-bar-3" />
             </div>
             <div class="join-progress-circle">
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
+              <div class="join-progress-circle-1">
+                1
+              </div>
+              <div class="join-progress-circle-2">
+                2
+              </div>
+              <div class="join-progress-circle-3">
+                3
+              </div>
             </div>
             <div class="join-progress-text">
               <div>提交申请</div>
@@ -63,6 +69,17 @@ export default {
   height: 100%;
   width: 100%;
   background: #0e753c;
+  animation: join-progress-bar-1-animation 4.12s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes join-progress-bar-1-animation {
+  0% {
+    background: linear-gradient(to right, #1db633, #0e753c);
+  }
+  100% {
+    background: linear-gradient(to right, #0e753c, #1db633);
+  }
 }
 
 .join-progress-bar-2 {

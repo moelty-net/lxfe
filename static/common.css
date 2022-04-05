@@ -1,0 +1,26 @@
+.aw-scoll-x, .aw-table {
+    width: 100%;
+}
+
+.aw-table th, .aw-table td {
+    text-align: left;
+}
+
+html, body, pre, .aw-scoll-x {
+    scrollbar-width: thin;
+    scrollbar-width: 5px;
+    scrollbar-color: #c0c0c0 #f0f0f0;
+}
+
+::-webkit-scrollbar, body::-webkit-scrollbar, pre::-webkit-scrollbar, .table-container::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track, body::-webkit-scrollbar-track, pre::-webkit-scrollbar-track, .table-container::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, pre::-webkit-scrollbar-thumb, .table-container::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+}

@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 .index-banner {
-  background: #1537a7;
+  background: linear-gradient(135deg, #1537a7, #53adf0);
   height: 100vh;
   margin: 0;
   padding-left: 0;

@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .banner {
-  background: #1537a7;
+  background: linear-gradient(135deg, #1537a7, #53adf0);
   height: 500px;
   margin: 0;
   padding-left: 0;
