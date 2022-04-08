@@ -2,7 +2,7 @@
   <header class="aw-header">
     <h1>
       <NuxtLink to="/">
-        冬尘月艺术司
+        {{ manifest.title }}
       </NuxtLink>
     </h1>
     <nav>
@@ -10,25 +10,26 @@
       <label for="aw-header-nav-expend-doc-demo" class="aw-header-nav-expend" />
       <input id="aw-header-nav-expend-doc-demo" type="checkbox" class="aw-header-nav-expend">
       <ul>
-        <li>
-          <NuxtLink to="/works">
-            作品展示
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/join">
-            加入我们
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/about">
-            关于我们
+        <li v-for="page in manifest.pages" :key="page.url">
+          <NuxtLink :to="`/${page.url}`">
+            {{ page.name }}
           </NuxtLink>
         </li>
       </ul>
     </nav>
   </header>
 </template>
+
+<script>
+export default {
+  props: {
+    manifest: {
+      type: Object,
+      default: () => ({})
+    }
+  }
+}
+</script>
 
 <style scoped>
 header.aw-header {

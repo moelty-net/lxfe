@@ -15,7 +15,7 @@
     <footer class="aw-footer" style="margin-top: 100px;">
       <div class="aw-footer-copyright aw-footer-copyright-s">
         <ul>
-          <li>&copy; 冬尘月艺术司 保留所有权利</li>
+          <li>&copy; 天依网络 保留所有权利</li>
         </ul>
       </div>
     </footer>
@@ -24,11 +24,16 @@
 
 <script>
 export default {
-  name: 'error-page',
-  props: ['error'],
+  name: 'PageError',
+  props: {
+    error: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   head () {
     return {
-      title: `HTTP ${this.errorCode} 错误 | 冬尘月艺术司`
+      title: `HTTP ${this.errorCode} 错误`
     }
   },
   computed: {

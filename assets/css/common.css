@@ -24,3 +24,10 @@ html, body, pre, .aw-scoll-x {
 ::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, pre::-webkit-scrollbar-thumb, .table-container::-webkit-scrollbar-thumb {
     background: #c0c0c0;
 }
+
+.page-enter-active, .page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter, .page-leave-active {
+  opacity: 0;
+}

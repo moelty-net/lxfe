@@ -1,33 +1,28 @@
 <template>
-  <main>
-    <awsl-header />
-    <div class="aw-alert index-banner">
-      <div class="index-banner-inner">
-        <h1>冬尘月艺术司</h1>
-        <h2 class="subtitle">
-          让中文 VOCALOID 绽放光辉
-        </h2>
-      </div>
-    </div>
-    <awsl-main>
-      <awsl-article>
-        <div class="news">
-          <h2>最近新闻</h2>
-          <ul>
-            <li v-for="article in news" :key="article.id">
-              <div class="news-link-box aw-ellipsis">
-                <NuxtLink :to="`/news/${article.id}`">
-                  {{ article.title }}
-                </NuxtLink>
-              </div>
-              <span>{{ article.date }}&emsp;</span>
-            </li>
-          </ul>
-        </div>
-      </awsl-article>
-    </awsl-main>
-    <awsl-footer />
-  </main>
+  <div class="page">
+    <main v-if="$saas.manifest">
+      <awsl-header :manifest="$saas.manifest" />
+      <awsl-banner :index="true" :manifest="$saas.manifest" />
+      <awsl-container>
+        <awsl-article v-if="$saas.manifest">
+          <div class="news">
+            <h2>最近新闻</h2>
+            <ul>
+              <li v-for="newsItem in news" :key="newsItem.id">
+                <div class="news-link-box aw-ellipsis">
+                  <NuxtLink :to="`/news/${newsItem.id}`">
+                    {{ newsItem.title }}
+                  </NuxtLink>
+                </div>
+                <span>{{ newsItem.date }}</span>
+              </li>
+            </ul>
+          </div>
+        </awsl-article>
+      </awsl-container>
+      <awsl-footer :manifest="$saas.manifest" />
+    </main>
+  </div>
 </template>
 
 <script>
@@ -35,81 +30,24 @@ export default {
   name: 'PageIndex',
   data () {
     return {
+      title: '加载中...',
       news: []
     }
   },
-  head: {
-    title: '冬尘月艺术司 - 让中文 VOCALOID 绽放光辉'
+  head () {
+    return {
+      title: `${this.title}`
+    }
   },
   async mounted () {
-    this.news = await this.$axios.$get('/data/news/news_list.json')
+    await this.$saas.start()
+    this.title = `${this.$saas.manifest.title} - ${this.$saas.manifest.subtitle}`
+    this.news = await this.$axios.$get(`${this.$saas.endpoint}/news/news.json`)
   }
 }
 </script>
 
 <style scoped>
-.index-banner {
-  background: linear-gradient(135deg, #1537a7, #53adf0);
-  height: 100vh;
-  margin: 0;
-  padding-left: 0;
-  padding-right: 0;
-  margin-bottom: 100px;
-}
-
-.index-banner h1 {
-  font-size: 92px;
-  font-weight: 400;
-  letter-spacing: .25em;
-  text-align: center;
-}
-
-.index-banner h2 {
-  font-size: 48px;
-  font-weight: 400;
-  text-align: center;
-}
-
-.index-banner-inner {
-  margin-top: 33vh;
-}
-
-@media (min-width: 539px) and (max-width: 1279px) {
-  .index-banner {
-    height: 600px;
-  }
-
-  .index-banner-inner {
-    margin-top: 200px;
-  }
-
-  .index-banner h1 {
-    font-size: 48px;
-  }
-
-  .index-banner h2 {
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 539px) {
-  .index-banner {
-    height: 300px;
-  }
-
-  .index-banner-inner {
-    margin-top: 100px;
-  }
-
-  .index-banner h1 {
-    font-size: 32px;
-  }
-
-  .index-banner h2 {
-    font-size: 16px;
-  }
-}
-
 .news {
   border: none;
   box-shadow: none;
