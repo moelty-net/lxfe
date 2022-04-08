@@ -55,5 +55,9 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-  ]
+  ],
+
+  axios: {
+    baseUrl: '/'
+  }
 }

@@ -1,69 +1,80 @@
-# dongchenyue-art
+# Lightweight VOCALOID Association Website
 
-## Build Setup
+LXFE is a lightweight website builder. Developed with [Vue.js](https://vuejs.org/) & [Nuxt.js](https://nuxtjs.org/), this project can generate a totally static website and render your [Markdown](https://en.wikipedia.org/wiki/Markdown) file in front-end dynamically.
 
-```bash
-# install dependencies
-$ npm install
+On the UI side, this LXFE introduces [FontAwsome](https://fontawesome.com/) and [awsl.css](https://github.com/baobao1270/awsl.css). Awsl.css is a lightweight CSS framework written by myself.
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+The project is initially and specially designed for [VOCALOID](https://www.vocaloid.com/en/) music producer association/bands. Especially, I mentioned the name of [Luo Tianyi](https://en.wikipedia.org/wiki/Luo_Tianyi), who is my favorite VOCALOID charactor.
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+Please note that this project doesn't follow [SEMVER](https://semver.org/) - it is rolling updated.
 
-# generate static project
-$ npm run generate
-```
+Though I am the project leader and wrote most parts of code, this project belongs to multiple VOCALOID associations. All these associations agree me to make this open source under the GPLv3.0 (only) license.
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+I have to state that some trademarks are used in this project. They belongs to the trademark owners. See the license part below for detail.
 
-## Special Directories
+## Deployment
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+Most of the music producers don't know code or IT. I provide free SaaS service for Chinese VOCALOID creators, with part-time technical support. You can contact me with email: [lty@luotianyi.dev](mailto:lty@luotianyi.dev).
 
-### `assets`
+Also, this project is continuously updated with GitHub Actions CI/CD to our SaaS server based on user's feedback. If you choose to self-host, you may be unable to get the latest updates. This project is rolling updated, so if some API changes, it will be a miserable process to migrate.
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+If you really want to deploy this project by yourself, please follow the steps below:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+1. Install [Node.js](https://nodejs.org/en/download/) 16.x.
+2. Clone this project and checkout to `release` branch
+   ```shell
+   git clone https://github.com/luotianyi-dev/lxfe.git
+   ```
+3. Install dependencies
+   ```shell
+   cd lxfe
+   npm install
+   ```
+4. Build the project
+   ```shell
+   npm run generate
+   ```
+5. Deploy the `dist` directory to your server
 
-### `components`
+## Development
+The initial development steps are same as deployment. Only the last step differs. Run `npm run dev` instead to start a development server.
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+By default, the mock API is connected to our staging server.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+## Contributing
 
-### `layouts`
+I will be happy to accept pull requests from anyone. However, please follow some guidelines below:
+ 1. You can use both English and Chinese (both Simplified and Traditional). However, the UI is writen in Simplified Chinese.
+ 2. Please splash your commit to 1 pull request per commit.
+ 3. Always create pull requests to `staging` branch.
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+For internal contributors, here is some rules to obey:
+ 1. Branches. Checkout `develop/something` branch from `staging` branch and start your develpment.
+ 2. Commits. Try your best to only fix one issue or implement one feature in one commit.
+ 3. Push. Remeber push your `develop/something` branch to server.
+ 4. Merge. When you are done, merge your branch to `staging` branch. You have to splash your commit to one create a pull request.
+ 5. Workflow. Only `staging` can be merged to `production` branch.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+## Copyright
+This project is licensed under the [GPLv3.0](https://www.gnu.org/licenses/gpl-3.0.en.html) (only) license.
 
+The SPDX identifier is `GPL-3.0-only`.
 
-### `pages`
+This project is jointly owned by: Joseph Chris (Tianyi Network), Dongchenyue, and all contributors of this project.
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+There are some people has special contribution to this project:
+ - Chen Luo
+ - Xiao Qian
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+All contributer and SaaS user should agree the GPLv3.0 license.
 
-### `plugins`
+There are some trademarks used in this project. They belongs to the trademark owners.
+ - Luo Tianyi is registered trademark of Shanghai Henian Information Technology Co,. Ltd.
+ - VOCALOID is registered trademark of Yamaha Corporation.
+ - BiliBili is registered trademark of Bilibili Inc.
+ - Twitter is registered trademark of Twitter Inc.
+ - YouTube is registered trademark of YouTube LLC.
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+VSQX.TOP isn't a trademark but please respect it's name.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+Special thanks to all VOCALOID characters.

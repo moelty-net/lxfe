@@ -22,18 +22,22 @@ jobs:
       run: npm install
     - name: Build
       run: npm run generate
-    - name: Deploy to Production Server
+    - name: Deploy to Server
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ci
         key: ${{ secrets.SSH_KEY }}
         source: dist
-        target: rm -rf /tmp/github-ci-deploy-staging-${GITHUB_SHA}
+        target: /tmp/github-ci-deploy-staging-${{ github.sha }}
     - name: Post-Deployment Script
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
         username: ci
         key: ${{ secrets.SSH_KEY }}
-        script: rm -rf /www/wwwroot/lxfe-stag/* && mv /tmp/github-ci-deploy-staging-${GITHUB_SHA}/* /www/wwwroot/lxfe-stag && chgrp -R www /www/wwwroot/lxfe-stag/*
+        script: |
+          rm -rf /www/wwwroot/lxfe-stag/* && \
+          mv /tmp/github-ci-deploy-staging-${{ github.sha }}/dist/* /www/wwwroot/lxfe-stag && \
+          chgrp -R www /www/wwwroot/lxfe-stag/* && \
+          rm -rf /tmp/github-ci-deploy-staging-${{ github.sha }}
