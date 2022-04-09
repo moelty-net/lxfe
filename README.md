@@ -43,6 +43,17 @@ By default, the mock API is connected to our staging server.
 
 ## Contributing
 
+Before you start please setup your repo:
+
+```shell
+git config user.name "Your Name"
+git config user.email "your email"
+git config commit.gpgsign true
+git config user.signingkey YOUR-SIGN-KEY-ID
+```
+
+
+
 I will be happy to accept pull requests from anyone. However, please follow some guidelines below:
  1. You can use both English and Chinese (both Simplified and Traditional). However, the UI is writen in Simplified Chinese.
  2. Please splash your commit to 1 pull request per commit.
