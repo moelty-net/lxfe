@@ -1,11 +1,8 @@
 <template>
   <section>
-    <h2 v-if="title !== ''">
-      {{ title }}
-    </h2>
-    <!-- eslint-disable vue/no-v-html -->
-    <div v-html="content" />
-    <!--eslint-enable-->
+    <no-ssr>
+      <awsl-mdrender-bootstrapper v-if="content" :content="content" />
+    </no-ssr>
   </section>
 </template>
 
@@ -14,17 +11,18 @@ import MarkdownIt from 'markdown-it'
 
 export default {
   props: {
-    title: { type: String, default: '' },
     path: { type: String, required: true }
   },
   data () {
     return {
-      content: ''
+      content: null
     }
   },
   async mounted () {
-    const md = new MarkdownIt()
-    this.content = md.render(await this.$axios.$get(`/data/${this.path}.md`))
+    const markdownContent = await this.$axios.$get(`${this.path}.md`)
+    const markdownIt = new MarkdownIt({ html: true })
+    this.content = markdownIt.render(markdownContent)
+    this.$forceUpdate()
   }
 }
 </script>

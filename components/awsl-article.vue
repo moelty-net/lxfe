@@ -6,7 +6,7 @@
 
 <style>
 article {
-  max-width: 800px;
+  max-width: 1080px;
   margin: auto;
 }
 

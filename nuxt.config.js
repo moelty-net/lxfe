@@ -1,6 +1,7 @@
 import exec from 'child_process'
 const commitHash = exec.execSync('git rev-parse --short HEAD')
 console.log('Build Version: ', commitHash.toString())
+console.log('NODE_ENV: ', process.env.NODE_ENV)
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -10,19 +11,18 @@ export default {
   target: 'static',
 
   env: {
-    COMMIT_REF: commitHash.toString() || 'dev'
+    COMMIT_REF: commitHash.toString() || 'dev',
+    NODE_ENV: process.env.NODE_ENV
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: '冬尘月艺术司',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: '/awsl.min.css' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
@@ -35,29 +35,29 @@ export default {
     '@nuxtjs/eslint-module'
   ],
 
+  css: [
+    '@/assets/css/common.css',
+    '@/assets/css/awsl.min.css'
+  ],
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({ path: '*', component: resolve(__dirname, 'pages/page.vue') })
+    }
+  },
+
+  plugins: [
+    '~/plugins/app',
+    '~/plugins/fontawesome'
+  ],
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/'
-  },
-
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      name: '冬尘月艺术司',
-      lang: 'zh-CN'
-    }
-  },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
+    baseUrl: '/'
   }
 }
