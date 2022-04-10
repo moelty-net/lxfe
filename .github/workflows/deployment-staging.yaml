@@ -8,8 +8,8 @@ on:
     branches: [ staging ]
 
 jobs:
-  deployment:
-    concurrency: deployment
+  deployment_staging:
+    concurrency: deployment_staging
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
