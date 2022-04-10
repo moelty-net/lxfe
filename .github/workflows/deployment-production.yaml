@@ -6,9 +6,13 @@ name: Deployment Production
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    types: [ closed ]
 
 jobs:
   deployment:
+    if: github.event.pull_request.merged == true
     concurrency: deployment
     runs-on: ubuntu-latest
     steps:
