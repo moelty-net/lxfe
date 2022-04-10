@@ -35,7 +35,6 @@ export default {
 
 <style>
 .aw-btn {
-  min-width: 5em;
   background: #66ccff;
   color: #ffffff;
 }

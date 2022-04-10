@@ -38,10 +38,19 @@ export default {
   margin-left: 100px;
 }
 
+.banner-inner h1 {
+  font-weight: 400;
+  font-size: 64px;
+}
+
 @media (max-width: 1279px) {
   .banner-inner {
     margin-left: 0 !important;
     text-align: center;
+  }
+
+  .banner-inner h1 {
+    font-size: 36px;
   }
 }
 
@@ -85,10 +94,6 @@ export default {
 @media (min-width: 539px) and (max-width: 1279px) {
   .index-banner {
     height: 600px;
-  }
-
-  .banner.banner-index .banner-inner {
-    margin-top: 200px;
   }
 
   .banner.banner-index h1 {

@@ -5,20 +5,25 @@
         {{ workGroup.title }}
       </h3>
       <div class="aw-g work-introduction-group">
-        <div v-for="work in workGroup.items" :key="work.id" class="aw-g-w-s-s-1 aw-g-w-1-2">
+        <div v-for="(work, workIndex) in workGroup.items" :key="workIndex" class="aw-g-w-s-s-1 aw-g-w-1-2">
           <div class="aw-p work-introduction">
             <div>
               <img :src="imageUrl(work.id)" alt="作品封面">
             </div>
             <div class="work-detail">
-              <b>{{ work.name }}</b><br>
-              <span class="work-desc">{{ work.desc }}</span><br>
+              <b>{{ work.name }}</b>
+              <span v-if="work.badges">
+                <md-badge v-for="(badge, badgeIndex) in work.badges" :key="badgeIndex" :background="badge.background" :color="badge.color" :text="badge.text" />
+              </span>
+              <br>
+              <span class="work-desc">{{ work.desc }}</span>
+              <br>
               <span class="work-links">
                 <a target="_blank" :href="`https://b23.tv/av${work.id}`">
                   <fa-icon icon="fa-brands fa-bilibili" />
                   播放
                 </a>
-                <a v-for="link in work.links" :key="link.icon" target="_blank" :href="link.link">
+                <a v-for="(link, linkIndex) in work.links" :key="linkIndex" target="_blank" :href="link.link">
                   <fa-icon :icon="link.icon" />
                   {{ link.text }}
                 </a>

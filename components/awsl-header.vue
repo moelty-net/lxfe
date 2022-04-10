@@ -10,7 +10,7 @@
       <label for="aw-header-nav-expend-doc-demo" class="aw-header-nav-expend" />
       <input id="aw-header-nav-expend-doc-demo" type="checkbox" class="aw-header-nav-expend">
       <ul>
-        <li v-for="page in manifest.pages" :key="page.url">
+        <li v-for="page in pagesShownInNav" :key="page.url">
           <NuxtLink :to="`/${page.url}`">
             {{ page.name }}
           </NuxtLink>
@@ -26,6 +26,11 @@ export default {
     manifest: {
       type: Object,
       default: () => ({})
+    }
+  },
+  computed: {
+    pagesShownInNav () {
+      return this.manifest.pages.filter(page => page.nav)
     }
   }
 }

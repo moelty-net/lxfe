@@ -5,7 +5,7 @@
         {{ memberGroup.title }}
       </h3>
       <div class="aw-g member-introduction-group">
-        <div v-for="member in memberGroup.members" :key="member.id" class="aw-g-w-s-s-1 aw-g-w-1-2">
+        <div v-for="(member, memberIndex) in memberGroup.members" :key="memberIndex" class="aw-g-w-s-s-1 aw-g-w-1-2">
           <div class="aw-p member-introduction">
             <div>
               <img :src="imageUrl(member.id)" class="member-avatar">
@@ -18,7 +18,7 @@
                   <fa-icon icon="fa-brands fa-bilibili" />
                   BiliBili
                 </a>
-                <a v-for="link in member.links" :key="link.icon" target="_blank" :href="link.link">
+                <a v-for="(link, linkIndex) in member.links" :key="linkIndex" target="_blank" :href="link.link">
                   <fa-icon :icon="link.icon" />
                   {{ link.text }}
                 </a>

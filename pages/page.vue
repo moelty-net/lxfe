@@ -25,8 +25,7 @@ export default {
   },
   head () {
     return {
-      title: this.title,
-      link: [{ rel: 'icon', href: '/api/favcion.ico' }]
+      title: this.title
     }
   },
   async mounted () {
