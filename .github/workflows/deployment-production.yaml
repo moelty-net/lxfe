@@ -11,9 +11,9 @@ on:
     types: [ closed ]
 
 jobs:
-  deployment:
+  deployment_production:
     if: github.event.pull_request.merged == true
-    concurrency: deployment
+    concurrency: deployment_production
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
