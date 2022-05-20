@@ -1,4 +1,6 @@
 # Lightweight VOCALOID Association Website
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fluotianyi-dev%2Flxfe.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fluotianyi-dev%2Flxfe?ref=badge_shield)
+
 
 LXFE is a lightweight website builder. Developed with [Vue.js](https://vuejs.org/) & [Nuxt.js](https://nuxtjs.org/), this project can generate a totally static website and render your [Markdown](https://en.wikipedia.org/wiki/Markdown) file in front-end dynamically.
 
@@ -89,3 +91,7 @@ There are some trademarks used in this project. They belongs to the trademark ow
 VSQX.TOP isn't a trademark but please respect it's name.
 
 Special thanks to all VOCALOID characters.
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fluotianyi-dev%2Flxfe.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fluotianyi-dev%2Flxfe?ref=badge_large)
