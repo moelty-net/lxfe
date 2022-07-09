@@ -24,13 +24,6 @@ jobs:
       run: npm install
     - name: Build
       run: npm run generate
-  
-  deploy:
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
-    concurrency: deploy
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
     - name: Push Files
       uses: appleboy/scp-action@master
       with:
