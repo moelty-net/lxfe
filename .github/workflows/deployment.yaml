@@ -1,15 +1,17 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Deployment Staging
+name: Build & Deploy to MoeLTY SaaS
 
 on:
   push:
-    branches: [ staging ]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    types: [ closed ]
 
 jobs:
-  deployment_staging:
-    concurrency: deployment_staging
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -22,22 +24,26 @@ jobs:
       run: npm install
     - name: Build
       run: npm run generate
-    - name: Deploy to Server
+  
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    concurrency: deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Push Files
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
-        username: ci
+        username: service_lxfe
         key: ${{ secrets.SSH_KEY }}
         source: dist
-        target: /tmp/github-ci-deploy-staging-${{ github.sha }}
-    - name: Post-Deployment Script
+        target: ~/deploys/${{ github.sha }}
+        strip_components: 1
+    - name: Switch to New Version
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
-        username: ci
+        username: service_lxfe
         key: ${{ secrets.SSH_KEY }}
-        script: |
-          rm -rf /www/wwwroot/lxfe-stag/* && \
-          mv /tmp/github-ci-deploy-staging-${{ github.sha }}/dist/* /www/wwwroot/lxfe-stag && \
-          chgrp -R www /www/wwwroot/lxfe-stag/* && \
-          rm -rf /tmp/github-ci-deploy-staging-${{ github.sha }}
+        script: ln -sfn ~/deploys/${{ github.sha }} ~/www
