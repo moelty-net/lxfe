@@ -15,7 +15,7 @@
     <footer class="aw-footer" style="margin-top: 100px;">
       <div class="aw-footer-copyright aw-footer-copyright-s">
         <ul>
-          <li>&copy; 天依网络 保留所有权利</li>
+          <li>&copy; <a href="https://moelty.net" target="_blank">萌洛网络</li>
         </ul>
       </div>
     </footer>
